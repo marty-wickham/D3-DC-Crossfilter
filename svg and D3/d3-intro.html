@@ -27,9 +27,9 @@
             .append("svg")                  // Progmatically creating an svg element and appending it as a child of the div
             .attr("width", w)               // D3 allows you to chain functions together seperated by a '.'
             .attr("height", h);
-        svg.selectAll("circle")             // selectAll function will select as many circles that are generated as a result of binding to the data on line 20.
+        svg.selectAll("circle")             // selectAll function will select as many circles that are generated as a result of binding to the data on line 23.
             .data(data)                     // Use the array defined on line 23 and pass it as a variable into our data() function.
-            .enter()                        // the D3 enter() function, to bind the data to the circles that we are about to create.
+            .enter()                        // Use the D3 enter() function, to bind the data to the circles that we are about to create.
             .append("circle")
             .attr("cx", function(d, i) {    // d represents the indivdual datum & i is the index of that datum
                 return 50 + (i * 100);      // gives us our x co=ordinate for each datum for each circle, 150 units to the right of it's predecessor
