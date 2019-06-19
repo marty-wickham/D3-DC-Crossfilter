@@ -24,7 +24,7 @@
         
         //Create SVG element
         var svg = d3.select("#draw-here")   // D3 object and select function, ties our viewport to a div with the id = #draw-here
-            .append("svg")                  // Progmatically creating an svg element 
+            .append("svg")                  // Progmatically creating an svg element and appending it as a child of the div
             .attr("width", w)               // D3 allows you to chain functions together seperated by a '.'
             .attr("height", h);
         svg.selectAll("circle")             // selectAll function will select as many circles that are generated as a result of binding to the data on line 20.

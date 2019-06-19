@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 and Scalable Vector Graphics</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var scale = d3.scale.linear()              
+            .domain([0, 600])                       // The domain is allowing for values up to 600
+            .range([0, 500]);                       // Our range allows for values up to 500.
+
+        console.log(scale(0));
+        console.log(scale(600));                    //  600, the maximum height, will be displayed as 500px.
+        console.log(scale(500));                    // So the range constrains our data within a viewport size.
+    </script>
+</body>
+
+</html>
