@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+</head>
+
+<body>
+    <h1>Data Visualisation</h1>
+
+    <h2>D3 and Scalable Vector Graphics</h2>
+
+    <div id="draw-here"></div>
+
+    <script>
+        var w = 500;
+        var h = 200;
+        var data = [40, 50, 10, 30, 20];    // The data to be provided to our SVGs.
+        
+        //Create SVG element
+        var svg = d3.select("#draw-here")   // D3 object and select function, ties our viewport to a div with the id = #draw-here
+            .append("svg")                  // Progmatically creating an svg element 
+            .attr("width", w)               // D3 allows you to chain functions together seperated by a '.'
+            .attr("height", h);
+        svg.selectAll("circle")             // selectAll function will select as many circles that are generated as a result of binding to the data on line 20.
+            .data(data)                     // Use the array defined on line 23 and pass it as a variable into our data() function.
+            .enter()                        // the D3 enter() function, to bind the data to the circles that we are about to create.
+            .append("circle")
+            .attr("cx", function(d, i) {    // d represents the indivdual datum & i is the index of that datum
+                return 50 + (i * 100);      // gives us our x co=ordinate for each datum for each circle, 150 units to the right of it's predecessor
+            })
+            .attr("cy", h / 2)              // The y-coordinate splits the height of the viewport and in two.
+            .attr("r", function(d) {
+                return d;                   // the radius for each one of these has been defined in the array.
+            });
+    </script>
+</body>
+
+</html>
