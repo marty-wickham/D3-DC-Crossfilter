@@ -53,12 +53,13 @@
             { "name": "Alice", "store": "Big Co.", "state": "NY", "spend": 350 },
         ];
         
-        var ndx = crossfilter(transactionsData);
-        var name_dim = ndx.dimension(dc.pluck('name'));
-        
-        var total_spend_per_person = name_dim.group().reduceSum(dc.pluck('spend'));
-        
-        dc.barChart('#per-person-chart')
+        var ndx = crossfilter(transactionsData);                                        // Naming your variable here ndx is just a convention
+                                                                                        // A dimension is a particular column of data that you want to use and to get its values.
+        var name_dim = ndx.dimension(dc.pluck('name'));                                 // Using DC to pluck all name elements from our dataset.
+                                                                                        
+        var total_spend_per_person = name_dim.group().reduceSum(dc.pluck('spend'));     // Then we want to group all the names together in order to get some values from them, sums up the amount they spend at each store.
+                                                                                        // Crossfilter's done its job up to a point here.
+        dc.barChart('#per-person-chart')                                                // Then we use Dimensional Charting, to create a bar chart
             .width(300)
             .height(150)
             .margins({ top: 10, right: 50, bottom: 30, left: 50 })
@@ -70,8 +71,9 @@
             .xAxisLabel("Person")
             .yAxis().ticks(4);
 
-        var store_dim = ndx.dimension(dc.pluck('store'));
-        var total_spend_per_store = store_dim.group().reduceSum(dc.pluck('spend'));
+        var store_dim = ndx.dimension(dc.pluck('store'));                               
+        var total_spend_per_store = store_dim.group().reduceSum(dc.pluck('spend'));     
+        
         dc.barChart('#per-store-chart')
             .width(300)
             .height(150)
@@ -86,6 +88,7 @@
 
         var state_dim = ndx.dimension(dc.pluck('state'));
         var total_spend_per_state = state_dim.group().reduceSum(dc.pluck('spend'));
+        
         dc.barChart('#per-state-chart')
             .width(300)
             .height(150)
