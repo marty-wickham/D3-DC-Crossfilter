@@ -29,7 +29,7 @@
 
     <script>                                                            // Deferring JSON content and we refer to it's location
         queue()                                                         // Between lines 29 and 38, it says go and get the transactions.json file in the data folder and bring it back in the form of d3.json.        
-            .defer(d3.json, "data/transactions.json")                   // When thats successful call a method
+            .defer(d3.json, "../data/transactions.json")                   // When thats successful call a method
             .await(makeGraphs);                                         // The data will return or we will get an error
                                                                         // Whatever you call the function in line 33 inside our await must match our custom function.
         function makeGraphs(error, transactionsData) {                  // Create a new Crossfilter object.
