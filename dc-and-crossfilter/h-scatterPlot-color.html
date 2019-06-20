@@ -54,9 +54,11 @@
                 
             var minDate = dateDim.bottom(1)[0].date;
             var maxDate = dateDim.top(1)[0].date;
+            
             var spendDim = ndx.dimension(function(d) {
                 return [d.date, d.spend, d];
             });
+            
             var spendGroup = spendDim.group();
             
             var spend_chart = dc.scatterPlot("#scatter-plot");
@@ -77,6 +79,7 @@
                 .colors(tradeColors)                                        // Reference to the var tradeColors
                 .dimension(spendDim)
                 .group(spendGroup);
+                
             dc.renderAll();
         }
     </script>

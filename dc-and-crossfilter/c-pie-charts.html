@@ -44,9 +44,10 @@
 
         function makeGraphs(error, transactionsData) {
             var ndx = crossfilter(transactionsData);                            // We create an instance of our Crossfilter object, ndx
+            
             var name_dim = ndx.dimension(dc.pluck('name'));                     // Then determine the dimension that we want to work with. // we use DC to access, or pluck, our name dimension.
             var total_spend_per_person = name_dim.group().reduceSum(dc.pluck('spend'));     // Then we're going to group by name and get a sum of spend by name.
-                                                                                            // So in order to do that, we use the object created on line 47, name_dim. // We group(), and then we reduceSum() based on spend.
+                                                                                            // We use the object created on line 48, name_dim. // We group(), and then we reduceSum() based on spend.
             dc.pieChart('#per-person-chart')                                                // Basically it's saying group all the names and break it into the spend per name.        
                 .height(330)                                                                // That becomes available as total_spend_per_person, which we will then use as a variable in our pie chart.
                 .radius(90)
